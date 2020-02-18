@@ -9,23 +9,33 @@
 import SwiftUI
 
 struct Cell: View {
-    var symbol = ""
+    var symbol: CellSymbol
+    
+    func symbolToString(symbol: CellSymbol) -> String {
+        switch symbol {
+            case .man: return "􀉩"
+            case .box: return "*"
+            case .wall: return "⌗"
+        }
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
                 .frame(width: 37, height: 37)
                 .foregroundColor(.white)
                 .border(Color.black, width: 1)
-            Text(symbol)
-                .font(.largeTitle)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.black)
+            Text(symbolToString(symbol: symbol))
+            .font(.largeTitle)
+            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.black)
+
         }
     }
 }
 
 struct Cell_Previews: PreviewProvider {
     static var previews: some View {
-        Cell(symbol: "􀉩")
+        Cell(symbol: .man)
     }
 }

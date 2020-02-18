@@ -5,6 +5,18 @@
 //  Created by Роенко Денис on 18.02.2020.
 //  Copyright © 2020 Denis Roenko. All rights reserved.
 //
+enum Move {
+    case left
+    case right
+    case up
+    case down
+}
+
+enum CellSymbol  {
+    case man
+    case box
+    case wall
+}
 
 class Box {
     var x: Int
@@ -63,7 +75,7 @@ class Surface {
         surface = Array(repeating: Array(repeating: "X", count: height), count: width)
         for y in 0...height-1 {
             for x in 0...width-1 {
-                surface[x][y] = " "
+                surface[x][y] = "Z"
             }
         }
     }

@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            
+            Cell(symbol: CellSymbol.man)
             Spacer()
             Divider()
             HStack {
