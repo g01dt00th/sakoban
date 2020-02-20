@@ -8,14 +8,30 @@
 
 import SwiftUI
 
+
+struct makeSurface: View {
+    @Binding var surface: Surface
+   
+    var body: some View {
+        VStack(spacing: 0) {
+            ForEach(0...surface.height-1, id: \.self) { y in
+                HStack(spacing: 2) {
+                    ForEach(0...self.surface.width-1, id: \.self) { x in self.surface.surface[x][y] }
+                }
+            }
+        }.offset(y: 20)
+    }
+}
+
 struct ContentView: View {
     @State var surface: Surface
-    @State private var surfaceWidth = ""
-    @State private var surfaceHeight = ""
-    
+    @State private var surfaceWidth: String = ""
+    @State private var surfaceHeight: String = ""
+
+       
     var body: some View {
         VStack {
-            Cell(symbol: CellSymbol.man)
+            makeSurface(surface: $surface)
             Spacer()
             Divider()
             HStack {
@@ -33,8 +49,8 @@ struct ContentView: View {
                 }
                 Divider()
 
-            }.frame(width: 600, height: 50)
-        }.frame(width: 700, height: 500)
+            }.frame(width: 700, height: 50)
+        }.frame(width: 800, height: 750)
     }
 }
 

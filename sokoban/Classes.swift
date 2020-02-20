@@ -16,6 +16,7 @@ enum CellSymbol  {
     case man
     case box
     case wall
+    case empty
 }
 
 class Box {
@@ -69,13 +70,14 @@ class Surface {
         createSurface()
     }
     
-    var surface = [[]]
+//    var surface = [[]]
+    var surface:[[Cell]] = [[]]
     
     private func createSurface(){
-        surface = Array(repeating: Array(repeating: "X", count: height), count: width)
+        surface = Array(repeating: Array(repeating: Cell(symbol: CellSymbol.wall), count: height), count: width)
         for y in 0...height-1 {
             for x in 0...width-1 {
-                surface[x][y] = "Z"
+                surface[x][y] = Cell(symbol: CellSymbol.empty)
             }
         }
     }

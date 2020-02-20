@@ -16,6 +16,7 @@ struct Cell: View {
             case .man: return "􀉩"
             case .box: return "*"
             case .wall: return "⌗"
+            case .empty: return " "
         }
     }
     
