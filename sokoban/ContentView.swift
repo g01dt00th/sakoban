@@ -9,8 +9,8 @@
 import SwiftUI
 
 
-struct makeSurface: View {
-    @Binding var surface: Surface
+struct MakeSurface: View {
+    @ObservedObject var surface: Surface
    
     var body: some View {
         VStack(spacing: 0) {
@@ -24,14 +24,13 @@ struct makeSurface: View {
 }
 
 struct ContentView: View {
-    @State var surface: Surface
+    @ObservedObject var surface: Surface
     @State private var surfaceWidth: String = ""
     @State private var surfaceHeight: String = ""
-
        
     var body: some View {
         VStack {
-            makeSurface(surface: $surface)
+            MakeSurface(surface: surface)
             Spacer()
             Divider()
             HStack {

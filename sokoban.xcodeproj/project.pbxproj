@@ -59,6 +59,8 @@
 		5E79DD5123FC2D2E00A16780 /* sokoban */ = {
 			isa = PBXGroup;
 			children = (
+				5E79DD6523FC2D8A00A16780 /* Classes.swift */,
+				5E79DD6723FC3EF300A16780 /* Cell.swift */,
 				5E79DD5223FC2D2E00A16780 /* AppDelegate.swift */,
 				5E79DD5423FC2D2E00A16780 /* ContentView.swift */,
 				5E79DD5623FC2D3300A16780 /* Assets.xcassets */,
@@ -66,8 +68,6 @@
 				5E79DD5E23FC2D3300A16780 /* Info.plist */,
 				5E79DD5F23FC2D3300A16780 /* sokoban.entitlements */,
 				5E79DD5823FC2D3300A16780 /* Preview Content */,
-				5E79DD6523FC2D8A00A16780 /* Classes.swift */,
-				5E79DD6723FC3EF300A16780 /* Cell.swift */,
 			);
 			path = sokoban;
 			sourceTree = "<group>";

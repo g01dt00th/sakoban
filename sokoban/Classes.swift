@@ -5,6 +5,8 @@
 //  Created by Роенко Денис on 18.02.2020.
 //  Copyright © 2020 Denis Roenko. All rights reserved.
 //
+import SwiftUI
+
 enum Move {
     case left
     case right
@@ -54,12 +56,12 @@ class Wall {
     }
 }
 
-class Surface {
-    var width: Int
-    var height: Int
-    var box: Box?
-    var man: Man?
-    var wall: Wall?
+class Surface: ObservableObject {
+    @Published var width: Int
+    @Published var height: Int
+    @Published var box: Box?
+    @Published var man: Man?
+    @Published var wall: Wall?
     
     init(width: Int, height: Int, box: Box?, man: Man?, wall: Wall?) {
         self.width = width
@@ -70,9 +72,8 @@ class Surface {
         createSurface()
     }
     
-//    var surface = [[]]
-    var surface:[[Cell]] = [[]]
-    
+    @Published var surface:[[Cell]] = [[]]
+   
     private func createSurface(){
         surface = Array(repeating: Array(repeating: Cell(symbol: CellSymbol.wall), count: height), count: width)
         for y in 0...height-1 {
