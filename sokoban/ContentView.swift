@@ -27,24 +27,79 @@ struct ContentView: View {
     @ObservedObject var surface: Surface
     @State private var surfaceWidth: String = ""
     @State private var surfaceHeight: String = ""
+    private let maxWidth = 20
+    private let maxHeight = 10
        
     var body: some View {
         VStack {
             MakeSurface(surface: surface)
+            Spacer()
+            VStack(spacing: 0) {
+                
+                Button(action: {
+                    //acrion here
+                }, label: {
+                    //label here
+                    Text("Up")
+                    }).padding(1)
+                .clipShape(Capsule())
+                .offset(x: -5)
+                
+                HStack(spacing: 2) {
+                    Button(action: {
+                        //acrion here
+                    }, label: {
+                        //label here
+                        Text("Left")
+                        }).padding(1)
+                    .clipShape(Capsule())
+
+                    
+                    Button(action: {
+                        //acrion here
+                    }, label: {
+                        //label here
+                        Text("Down")
+                        }).padding(1)
+                    .clipShape(Capsule())
+                    
+                    Button(action: {
+                        //acrion here
+                    }, label: {
+                        //label here
+                        Text("Right")
+                        }).padding(1)
+                    .clipShape(Capsule())
+
+                }
+            }
             Spacer()
             Divider()
             HStack {
                 Divider()
                 Text("Ширина поля")
                 TextField(String(surface.width), text: $surfaceWidth) {
-                    self.surface.width = Int(self.surfaceWidth)!
+                    if Int(self.surfaceWidth)! <= self.maxWidth {
+                        self.surface.width = Int(self.surfaceWidth)!
+                    }
+                    else {
+                        self.surface.width = self.maxWidth
+                        self.surfaceWidth = String(self.maxWidth)
+                    }
                     print(self.surface.width)
                 }
                 Divider()
                 Text("Высота поля")
                 TextField(String(surface.height), text: $surfaceHeight) {
-                    self.surface.height = Int(self.surfaceHeight)!
-                    print(self.surface.height)
+                    if Int(self.surfaceHeight)! <= self.maxHeight {
+                        self.surface.height = Int(self.surfaceHeight)!
+                    }
+                    else {
+                        self.surface.height = self.maxHeight
+                        self.surfaceHeight = String(self.maxHeight)
+
+                    }
+                    print(self.surface.width)
                 }
                 Divider()
 
